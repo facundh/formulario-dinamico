@@ -4,10 +4,16 @@ const FormContex = createContext();
 export const FormConsumer = () => useContext(FormContex);
 const FormProvider = ({children}) => {
 
-  const [form, setForm] = useState();
+  const [formularios, setFormormularios] = useState([]);
+
+  const addToFormularios = (form) => {
+      setFormormularios(
+        [...formularios, form]
+      )
+  }
 
   return (
-    <FormContex.Provider>
+    <FormContex.Provider value={{formularios, addToFormularios, setFormormularios}}>
         {children}
     </FormContex.Provider>
   );

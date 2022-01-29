@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import AcordionContainer from '../AcordionContainer/AcordionContainer';
 import CreateFormulario from '../CreateFormulario/CreateFormulario';
 
 const FormScreen = () => {
@@ -20,7 +19,7 @@ const FormScreen = () => {
 }
 {
 
-    show && <CreateFormulario />
+    show && <CreateFormulario handleToggleShow={handleToggleShow} />
 }
   </div>
   )

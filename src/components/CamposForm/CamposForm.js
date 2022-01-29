@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import {v4 as uuidv4} from 'uuid';
 
-const CamposForm = () => {
-  const [campo, setCampo] = useState({
+const CamposForm = ({addCampos, handleToggleCampos, editarState, editar, confirmarEdicion}) => {
+  const [campo, setCampo] = useState(editarState || {
+    id: uuidv4(),
     label: "",
     type: "",
     required: false,
@@ -14,6 +16,22 @@ const CamposForm = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleClick = () => {
+    if(campo.label === '' || campo.type === '' || campo.style === ''){
+      alert('Todos los campos deben rellenarse');
+      return;
+    } 
+
+     addCampos(campo)
+     setCampo({
+      label: "",
+      type: "",
+      required: false,
+      style: "",
+     })
+     handleToggleCampos();
+  }
 
 
   return (
@@ -62,7 +80,14 @@ const CamposForm = () => {
         onChange={handleInputChange}
       />
 
-      <button className="btn btn-outline-success mt-2">Agregar</button>
+      {
+        editar 
+        ?
+        <button className="btn btn-outline-success mt-2" onClick={() => confirmarEdicion(campo)}>Confirmar edicion</button>
+        :
+        <button className="btn btn-outline-success mt-2" onClick={handleClick}>Agregar</button>
+      }
+        
     </div>
   );
 };

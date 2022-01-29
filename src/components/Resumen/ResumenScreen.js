@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import AcordionContainer from '../AcordionContainer/AcordionContainer';
 import Input from '../Ui/Input';
 
 const ResumenScreen = () => {
@@ -11,6 +12,8 @@ const ResumenScreen = () => {
   return (
         <div className='container mt-4'>
             <h1>Listado de Formularios</h1>
+
+            <AcordionContainer />
            
            <button 
            className='btn btn-outline-primary mt-3'

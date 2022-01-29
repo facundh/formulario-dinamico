@@ -1,9 +1,10 @@
 import React from "react";
+import { FormConsumer } from "../../context/FormProvider";
 import config from "../../listaFormulario.json";
 import Acordion from "../Acordion/Acordion";
 
 const AcordionContainer = () => {
- const {formularios} = config;
+ const {formularios} = FormConsumer();
   return (
         <>
       {
